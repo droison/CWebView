@@ -154,6 +154,14 @@ public class WebView extends FrameLayout {
         return this.mWebSettings != null?this.mWebSettings:(this.isX5WebView?(this.mWebSettings = new WebSettings(this.mX5WebView.getSettings())):(this.mWebSettings = new WebSettings(this.mWebView.getSettings())));
     }
 
+    public void stopLoading() {
+        if (this.isX5WebView) {
+            this.mX5WebView.stopLoading();
+        } else {
+            this.mWebView.stopLoading();
+        }
+    }
+
     public void setInitialScale(int scale) {
         if(this.isX5WebView) {
             this.mX5WebView.setInitialScale(scale);
