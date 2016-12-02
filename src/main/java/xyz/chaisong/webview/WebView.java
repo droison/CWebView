@@ -138,6 +138,14 @@ public class WebView extends FrameLayout {
         }
     }
 
+    public void resumeTimers(){
+        if (this.isX5WebView) {
+            this.mX5WebView.resumeTimers();
+        } else {
+            this.mWebView.resumeTimers();
+        }
+    }
+
     public String getTitle() {
         return this.isX5WebView? this.mX5WebView.getTitle(): this.mWebView.getTitle();
     }
