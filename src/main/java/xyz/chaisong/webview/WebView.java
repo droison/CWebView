@@ -10,6 +10,8 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import java.util.Map;
+
 import xyz.chaisong.webview.inner.*;
 
 /**
@@ -63,6 +65,14 @@ public class WebView extends FrameLayout {
             this.mX5WebView.loadUrl(url);
         } else {
             this.mWebView.loadUrl(url);
+        }
+    }
+
+    public void loadUrl(String url, Map<String, String> additionalHttpHeaders) {
+        if(this.isX5WebView) {
+            this.mX5WebView.loadUrl(url, additionalHttpHeaders);
+        } else {
+            this.mWebView.loadUrl(url, additionalHttpHeaders);
         }
     }
 
