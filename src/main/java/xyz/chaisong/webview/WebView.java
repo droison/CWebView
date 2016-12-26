@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.widget.FrameLayout;
 
 import java.util.Map;
@@ -53,10 +55,16 @@ public class WebView extends FrameLayout {
             mX5WebView = new X5WebView(context, attrs);
             mX5WebView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             this.addView(mX5WebView);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                com.tencent.smtt.sdk.CookieManager.getInstance().setAcceptThirdPartyCookies(mX5WebView, true);
+            }
         } else {
             mWebView = new SystemWebView(context, attrs);
             mWebView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             this.addView(mWebView);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                CookieManager.getInstance().setAcceptThirdPartyCookies(mWebView, true);
+            }
         }
     }
 
