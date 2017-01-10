@@ -68,6 +68,14 @@ public class WebView extends FrameLayout {
         }
     }
 
+    public com.tencent.smtt.sdk.WebView getX5WebView() {
+        return mX5WebView;
+    }
+
+    public android.webkit.WebView getWebView() {
+        return mWebView;
+    }
+
     public void loadUrl(String url) {
         if(this.isX5WebView) {
             this.mX5WebView.loadUrl(url);
